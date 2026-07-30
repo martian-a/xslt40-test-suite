@@ -253,6 +253,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          be determined by default rules.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Sheila Thomson" on="2026-07-28" change="Allow HTML5 meta/@charset instead of meta/@http-equiv" />
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -264,9 +265,12 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </test>
       <result>
          <all-of>
-            <serialization-matches flags="ix">
-               <![CDATA[<META\s+http-equiv=['"]Content-Type['"]\s+content=['"]text/html;\s+charset=UTF-8['"]\s*>]]>
-            </serialization-matches>
+         	<any-of>
+              <serialization-matches flags="ix">
+                 <![CDATA[<META\s+http-equiv=['"]Content-Type['"]\s+content=['"]text/html;\s+charset=UTF-8['"]\s*>]]>
+              </serialization-matches>
+         	  <serialization-matches flags="ix"><![CDATA[<META\s+charset=['"]UTF-8['"]\s*>]]></serialization-matches>
+         	</any-of>
             <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
          </all-of>
       </result>
@@ -277,6 +281,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          be determined by default rules.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Sheila Thomson" on="2026-07-28" change="Allow XHTML5 meta/@charset instead of meta/@http-equiv" />
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -290,7 +295,10 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <all-of>
             <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
             <serialization-matches><![CDATA[<html\sxmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
-            <serialization-matches><![CDATA[<meta\shttp-equiv="Content-Type"\scontent="text/html;\scharset=UTF-8"\s*/>]]></serialization-matches>
+         	  <any-of>
+              <serialization-matches><![CDATA[<meta\shttp-equiv="Content-Type"\scontent="text/html;\scharset=UTF-8"\s*/>]]></serialization-matches>
+         	    <serialization-matches><![CDATA[<meta\s+charset="UTF-8"\s*/>]]></serialization-matches>
+         	  </any-of>
          </all-of>
       </result>
    </test-case>
@@ -356,6 +364,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <description>Test with xsl:result-document @method="html".</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Sheila Thomson" on="2026-07-28" change="Allow HTML5 meta/@charset instead of meta/@http-equiv" />
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -368,8 +377,12 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <result>
          <all-of>
             <serialization-matches flags="s"><![CDATA[<html>.*</html>]]></serialization-matches>
-            <serialization-matches flags="i"
-               ><![CDATA[<meta\s+http-equiv="Content-Type"]]></serialization-matches>
+         	  <any-of>
+              <serialization-matches flags="i"
+                 ><![CDATA[<meta\s+http-equiv="Content-Type"]]></serialization-matches>
+         	    <serialization-matches flags="i"
+         	       ><![CDATA[<meta\s+charset="UTF-8"]]></serialization-matches>
+         	  </any-of>
             <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
          </all-of>
       </result>
@@ -379,6 +392,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <description>Test with xsl:result-document @method="xhtml".</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Sheila Thomson" on="2026-07-28" change="Allow HTML5 meta/@charset instead of meta/@http-equiv" />
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -392,7 +406,10 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <all-of>
             <serialization-matches flags="s"
                ><![CDATA[<html\s+xmlns=['"]http://www.w3.org/1999/xhtml['"]>.*</html>]]></serialization-matches>
-            <serialization-matches><![CDATA[<meta\s+http-equiv="Content-Type"]]></serialization-matches>
+         	  <any-of>
+              <serialization-matches><![CDATA[<meta\s+http-equiv="Content-Type"]]></serialization-matches>
+         	    <serialization-matches><![CDATA[<meta\s+charset="UTF-8"]]></serialization-matches>
+         	  </any-of>
             <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
          </all-of>
       </result>
@@ -549,6 +566,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          @media-type is set and there is a 'head' element in the final result tree.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Sheila Thomson" on="2026-07-28" change="Allow HTML5 meta/@charset instead of meta/@http-equiv" />
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -560,7 +578,10 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA[<meta http-equiv="Content-Type" content="application/xhtml-xml; charset=UTF-8">]]></serialization-matches>
+         	  <any-of>
+              <serialization-matches><![CDATA[<meta http-equiv="Content-Type" content="application/xhtml-xml; charset=UTF-8">]]></serialization-matches>
+         	    <serialization-matches><![CDATA[<meta charset="UTF-8">]]></serialization-matches>
+         	  </any-of>
             <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
          </all-of>
       </result>
@@ -572,6 +593,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          element in the final result tree.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Sheila Thomson" on="2026-07-28" change="Allow HTML5 meta/@charset instead of meta/@http-equiv" />
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -583,7 +605,10 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA[<meta http-equiv="Content-Type" content="application/xhtml-xml; charset=UTF-8">]]></serialization-matches>
+         	  <any-of>
+              <serialization-matches><![CDATA[<meta http-equiv="Content-Type" content="application/xhtml-xml; charset=UTF-8">]]></serialization-matches>
+         	    <serialization-matches><![CDATA[<meta charset="UTF-8">]]></serialization-matches>
+         	  </any-of>
             <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
          </all-of>
       </result>
@@ -802,6 +827,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Sheila Thomson" on="2026-07-28" change="Allow XHTML5 meta/@charset instead of meta/@http-equiv" />
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -814,7 +840,10 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <result>
          <all-of>
             <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
-            <serialization-matches><![CDATA[<meta\s+http-equiv]]></serialization-matches>
+            <any-of>
+              <serialization-matches><![CDATA[<meta\s+http-equiv]]></serialization-matches>
+              <serialization-matches><![CDATA[<meta\s+charset]]></serialization-matches>
+            </any-of>
             <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
             <serialization-matches><![CDATA[<body>hello</body>]]></serialization-matches>
          </all-of>
@@ -1514,6 +1543,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          element.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Sheila Thomson" on="2026-07-28" change="Allow HTML5 meta/@charset instead of meta/@http-equiv" />
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1525,12 +1555,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </test>
       <result>
          <all-of>
-            <serialization-matches flags="i"
-               ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
-            <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
-            <serialization-matches flags="i"
-               ><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
-            <serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+         	 <any-of>
+         	   <all-of>
+               <serialization-matches flags="i"
+         	       ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+         	     <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
+         	     <serialization-matches flags="i"
+         	       ><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+         	     <serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+         	   </all-of>
+         	   <serialization-matches flags="i"><![CDATA[<meta\s+charset="UTF-8">]]></serialization-matches>
+         	 </any-of>            
             <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</HEAD>]]></serialization-matches>
          </all-of>
       </result>
@@ -1568,6 +1603,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          element.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Sheila Thomson" on="2026-07-28" change="Allow HTML5 meta/@charset instead of meta/@http-equiv" />
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1579,12 +1615,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </test>
       <result>
          <all-of>
-            <serialization-matches flags="i"
-               ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
-            <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
-            <serialization-matches flags="i"
-               ><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
-            <serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+         	  <any-of>
+         	     <all-of>
+         	        <serialization-matches flags="i"
+         	     	  ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+         	        <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
+         	        <serialization-matches flags="i"
+         	     	  ><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+         	        <serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+         	     </all-of>
+         	     <serialization-matches flags="i"><![CDATA[<meta\s+charset="UTF-8">]]></serialization-matches>
+         	  </any-of>            
             <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</HEAD>]]></serialization-matches>
          </all-of>
       </result>
@@ -1617,32 +1658,35 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </result>
    </test-case>
 
-   <test-case name="result-document-0274">
-      <description>Test HTML output with include-content-type="1", the result tree has a 'head'
-         element.</description>
-      <created by="Debbie Lockett" on="2014-08-11"/>
-      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
-      <environment ref="result-document-02"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-         <feature value="serialization" satisfied="true"/>
-      </dependencies>
-      <test>
-         <stylesheet file="result-document-0274.xsl"/>
-         <output serialize="yes"/>
-      </test>
-      <result>
-         <all-of>
-            <serialization-matches flags="i"
-               ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
-            <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
-            <serialization-matches flags="i"
-               ><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
-            <serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
-            <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</HEAD>]]></serialization-matches>
-         </all-of>
-      </result>
-   </test-case>
+	<test-case name="result-document-0274">
+		<description>Test HTML output with include-content-type="1", the result tree has a 'head' element.</description>
+		<created by="Debbie Lockett" on="2014-08-11"/>
+		<modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+		<modified by="Sheila Thomson" on="2026-07-28" change="Allow HTML5 meta/@charset instead of meta/@http-equiv"/>
+		<environment ref="result-document-02"/>
+		<dependencies>
+			<spec value="XSLT30+"/>
+			<feature value="serialization" satisfied="true"/>
+		</dependencies>
+		<test>
+			<stylesheet file="result-document-0274.xsl"/>
+			<output serialize="yes"/>
+		</test>
+		<result>
+			<all-of>
+				<any-of>
+					<all-of>
+						<serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+						<serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
+						<serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+						<serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+					</all-of>
+					<serialization-matches flags="i"><![CDATA[<meta\s+charset="UTF-8">]]></serialization-matches>
+				</any-of>
+				<serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</HEAD>]]></serialization-matches>
+			</all-of>
+		</result>
+	</test-case>
 
    <test-case name="result-document-0275">
       <description>Test HTML output with include-content-type value set to "0".</description>
@@ -2148,6 +2192,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <description>Test AVT in @include-content-type of xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Sheila Thomson" on="2026-07-28" change="Allow HTML5 meta/@charset instead of meta/@http-equiv" />
       <environment ref="result-document-07"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2160,7 +2205,10 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <result>
          <all-of>
             <serialization-matches><![CDATA[<html>]]></serialization-matches>
-            <serialization-matches><![CDATA[<meta\s+http-equiv]]></serialization-matches>
+         	  <any-of>
+               <serialization-matches><![CDATA[<meta\s+http-equiv]]></serialization-matches>
+         	     <serialization-matches><![CDATA[<meta\s+charset]]></serialization-matches>
+         	  </any-of>
             <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
             <serialization-matches><![CDATA[<body>hello</body>]]></serialization-matches>
          </all-of>
@@ -2829,6 +2877,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          true ".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Sheila Thomson" on="2026-07-28" change="Allow HTML5 meta/@charset instead of meta/@http-equiv" />
       <environment ref="result-document-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -2840,12 +2889,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </test>
       <result>
          <all-of>
-            <serialization-matches flags="i"
-               ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
-            <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
-            <serialization-matches flags="i"
-               ><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
-            <serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+         	  <any-of>
+         	     <all-of>
+         	        <serialization-matches flags="i"
+         	           ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+         	        <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
+         	        <serialization-matches flags="i"
+         	           ><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+         	        <serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>         		
+         	     </all-of>
+         	     <serialization-matches flags="i"><![CDATA[<meta\s+charset="UTF-8">]]></serialization-matches>	
+         	  </any-of>            
             <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</HEAD>]]></serialization-matches>
          </all-of>
       </result>
@@ -2956,6 +3010,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-1402b">
       <description>JSON serialization with nested HTML, with default version 5.0</description>
       <created by="Debbie Lockett" on="2019-11-29"/>
+      <modified by="Sheila Thomson" on="2026-07-28" change="Allow HTML5 meta/@charset instead of meta/@http-equiv" />
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="serialization" satisfied="true"/>
@@ -2969,7 +3024,12 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <result>
          <all-of>
             <serialization-matches><![CDATA["doc1":"<]]></serialization-matches>
-            <serialization-matches><![CDATA[<html xmlns=\\"http:\\/\\/www.w3.org\\/1999\\/xhtml\\"><head><meta http-equiv=\\"Content-Type\\" content=\\"text\\/html; charset=UTF-8\\"><title>Document 1<\\/title>]]></serialization-matches>
+            <serialization-matches><![CDATA[<html xmlns=\\"http:\\/\\/www.w3.org\\/1999\\/xhtml\\"><head><meta\s+]]></serialization-matches>
+         	  <any-of>
+         	  	<serialization-matches><![CDATA[<head><meta http-equiv=\\"Content-Type\\" content=\\"text\\/html; charset=UTF-8\\"><title>]]></serialization-matches>
+         	  	<serialization-matches><![CDATA[<head><meta charset=\\"UTF-8\\"><title>]]></serialization-matches>
+         	  </any-of>
+         	  <serialization-matches><![CDATA[<title>Document 1<\\/title>]]></serialization-matches>
          </all-of>
       </result>
    </test-case>

@@ -348,6 +348,7 @@
       <keywords>single-character-map xhtml-output-method _WRONG:output-method-incorrect</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+   	<modified by="Sheila Thomson" on="2026-07-28" change="Allow XHTML5 meta/@charset instead of meta/@http-equiv" />
       <environment ref="charmap001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -358,7 +359,10 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches>content=["']te\[X\]t/html; \[C\]harset=UTF-8['"]</serialization-matches>
+         	<any-of>
+            	<serialization-matches>content=["']te\[X\]t/html; \[C\]harset=UTF-8['"]</serialization-matches>
+         		<serialization-matches><![CDATA[<meta\s+charset=("|')UTF-8("|')\s?/>]]></serialization-matches>
+         	</any-of>
             <serialization-matches>The qui\[C\]k brown fo\[X\] jumped over the lazy dog</serialization-matches>
          </all-of>
       </result>

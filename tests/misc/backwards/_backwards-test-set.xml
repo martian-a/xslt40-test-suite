@@ -305,6 +305,7 @@
       <description>effect of BC on default output method</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+   	  <modified by="Sheila Thomson" on="2026-07-28" change="Allow HTML5 meta/@charset instead of meta/@http-equiv" />
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="serialization"/>
@@ -316,7 +317,10 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches>meta http-equiv</serialization-matches>
+         	<any-of>
+            	<serialization-matches>meta http-equiv</serialization-matches>
+         		<serialization-matches>meta charset</serialization-matches>
+         	</any-of>
             <!--<serialization-matches>My%20Documents</serialization-matches>-->
          </all-of>
       </result>
