@@ -5262,5 +5262,167 @@
          <serialization-matches>^\[\{"a":"x","b":"y","c":\["z"\]\},\{"a":"p","b":"q","c":\["r"\]\}\]$</serialization-matches>
       </result>
    </test-case>
+   
+   <test-case name="output-0800">
+		<description>XHTML 5 serialization per XSLT4+ must insert meta/@name = 'charset' not meta/@name = 'http-equiv' into head when include-content-type is set to true.</description>
+		<created by="Sheila Thomson" on="2026-07-01"/>
+		<dependencies>
+			<spec value="XSLT40+"/>
+			<feature value="HTML5"/>
+		</dependencies>
+		<test>
+			<stylesheet file="output-0800.xsl"/>
+			<output serialize="yes" tree="no"/>
+		</test>
+		<result>
+			<serialization-matches><![CDATA[<head>\s*<meta\s+charset="UTF-8"\s?/>\s*</head>]]></serialization-matches>
+		</result>
+	</test-case>
+   
+	<test-case name="output-0801">
+		<description>XHTML 5 serialization per XSLT4+ must not insert meta/@name = 'charset' nor meta/@name = 'http-equiv' in head when include-content-type is set to false.</description>
+		<created by="Sheila Thomson" on="2026-07-01"/>
+		<dependencies>
+			<spec value="XSLT40+"/>
+			<feature value="HTML5"/>
+		</dependencies>
+		<test>
+			<stylesheet file="output-0801.xsl"/>
+			<output serialize="yes" tree="no"/>
+		</test>
+		<result>
+			<serialization-matches><![CDATA[<head>\s*</head>]]></serialization-matches>
+		</result>
+	</test-case>
+	
+	<test-case name="output-0802">
+		<description>XHTML 5 serialization (default when output/@html-version is unset) per XSLT4+ must insert meta/@name = 'charset' not meta/@name = 'http-equiv' into head when include-content-type is set to true.</description>
+		<created by="Sheila Thomson" on="2026-07-01"/>
+		<dependencies>
+			<spec value="XSLT40+"/>
+			<feature value="HTML5"/>
+		</dependencies>
+		<test>
+			<stylesheet file="output-0802.xsl"/>
+			<output serialize="yes" tree="no"/>
+		</test>
+		<result>
+			<serialization-matches><![CDATA[<head>\s*<meta\s+charset="UTF-8"\s?/>\s*</head>]]></serialization-matches>
+		</result>
+	</test-case>
+	
+	<test-case name="output-0803">
+		<description>XHTML 5 serialization (default when output/@html-version is unset) per XSLT4+ must not insert meta/@name = 'charset' nor meta/@name = 'http-equiv' in head when include-content-type is set to false.</description>
+		<created by="Sheila Thomson" on="2026-07-01"/>
+		<dependencies>
+			<spec value="XSLT40+"/>
+			<feature value="HTML5"/>
+		</dependencies>
+		<test>
+			<stylesheet file="output-0803.xsl"/>
+			<output serialize="yes" tree="no"/>
+		</test>
+		<result>
+			<serialization-matches><![CDATA[<head>\s*</head>]]></serialization-matches>
+		</result>
+	</test-case>
+	
+	<test-case name="output-0810">
+		<description>HTML 5 serialization (set via output/@html-version) per XSLT4+ must insert meta/@name = 'charset' not meta/@name = 'http-equiv' into head when include-content-type is set to true.</description>
+		<created by="Sheila Thomson" on="2026-07-01"/>
+		<dependencies>
+			<spec value="XSLT40+"/>
+			<feature value="HTML5"/>
+		</dependencies>
+		<test>
+			<stylesheet file="output-0810.xsl"/>
+			<output serialize="yes" tree="no"/>
+		</test>
+		<result>
+			<serialization-matches><![CDATA[<head>\s*<meta\s+charset="UTF-8"\s?>\s*</head>]]></serialization-matches>
+		</result>
+	</test-case>
+	
+	
+	
+	<test-case name="output-0811">
+		<description>HTML 5 serialization (set via output/@html-version) per XSLT4+ must not insert meta/@name = 'charset' nor meta/@name = 'http-equiv' in head when include-content-type is set to false.</description>
+		<created by="Sheila Thomson" on="2026-07-01"/>
+		<dependencies>
+			<spec value="XSLT40+"/>
+			<feature value="HTML5"/>
+		</dependencies>
+		<test>
+			<stylesheet file="output-0811.xsl"/>
+			<output serialize="yes" tree="no"/>
+		</test>
+		<result>
+			<serialization-matches><![CDATA[<head>\s*</head>]]></serialization-matches>
+		</result>
+	</test-case>
+	
+	<test-case name="output-0812">
+		<description>HTML 5 serialization (set via output/@version) per XSLT4+ must insert meta/@name = 'charset' not meta/@name = 'http-equiv' into head when include-content-type is set to true.</description>
+		<created by="Sheila Thomson" on="2026-07-01"/>
+		<dependencies>
+			<spec value="XSLT40+"/>
+			<feature value="HTML5"/>
+		</dependencies>
+		<test>
+			<stylesheet file="output-0812.xsl"/>
+			<output serialize="yes" tree="no"/>
+		</test>
+		<result>
+			<serialization-matches><![CDATA[<head>\s*<meta\s+charset="UTF-8"\s?>\s*</head>]]></serialization-matches>
+		</result>
+	</test-case>
+	
+	<test-case name="output-0813">
+		<description>HTML 5 serialization (set via output/@version) per XSLT4+ must not insert meta/@name = 'charset' nor meta/@name = 'http-equiv' in head when include-content-type is set to false.</description>
+		<created by="Sheila Thomson" on="2026-07-01"/>
+		<dependencies>
+			<spec value="XSLT40+"/>
+			<feature value="HTML5"/>
+		</dependencies>
+		<test>
+			<stylesheet file="output-0813.xsl"/>
+			<output serialize="yes" tree="no"/>
+		</test>
+		<result>
+			<serialization-matches><![CDATA[<head>\s*</head>]]></serialization-matches>
+		</result>
+	</test-case>
+	
+	<test-case name="output-0814">
+		<description>HTML 5 serialization (default when neither output/@html-version nor output/@version are set) per XSLT4+ must insert meta/@name = 'charset' not meta/@name = 'http-equiv' into head when include-content-type is set to true.</description>
+		<created by="Sheila Thomson" on="2026-07-01"/>
+		<dependencies>
+			<spec value="XSLT40+"/>
+			<feature value="HTML5"/>
+		</dependencies>
+		<test>
+			<stylesheet file="output-0814.xsl"/>
+			<output serialize="yes" tree="no"/>
+		</test>
+		<result>
+			<serialization-matches><![CDATA[<head>\s*<meta\s+charset="UTF-8"\s?>\s*</head>]]></serialization-matches>
+		</result>
+	</test-case>
+	
+	<test-case name="output-0815">
+		<description>HTML 5 serialization (default when neither output/@html-version nor output/@version are set) per XSLT4+ must not insert meta/@name = 'charset' nor meta/@name = 'http-equiv' in head when include-content-type is set to false.</description>
+		<created by="Sheila Thomson" on="2026-07-01"/>
+		<dependencies>
+			<spec value="XSLT40+"/>
+			<feature value="HTML5"/>
+		</dependencies>
+		<test>
+			<stylesheet file="output-0815.xsl"/>
+			<output serialize="yes" tree="no"/>
+		</test>
+		<result>
+			<serialization-matches><![CDATA[<head>\s*</head>]]></serialization-matches>
+		</result>
+	</test-case>
 	
 </test-set>
