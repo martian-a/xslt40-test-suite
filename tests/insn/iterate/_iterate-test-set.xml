@@ -679,6 +679,25 @@
     </result>
   </test-case>
   
+  <test-case name="iterate-047">
+    <description>Local variable declared within xsl:next-iteration/xsl:with-param</description>
+    <created by="Michael Kay" on="2026-07-22"/>
+    <environment ref="iterate001"/>
+    <test>
+      <stylesheet file="iterate-047.xsl"/>
+    </test>
+    <result>
+      <all-of>
+        <assert>/out/item[1]/@where = 'one two three'</assert>
+        <assert>/out/item[2]/@where = 'two three'</assert>
+        <assert>/out/item[3]/@where = 'three '</assert>
+        <assert>/out/item[4]/@where = 'one two'</assert>
+        <assert>/out/item[5]/@where = 'two three'</assert>
+        <assert>/out/item[6]/@where = 'three '</assert>
+      </all-of>
+    </result>
+  </test-case>
+  
   <test-case name="iterate-401" covers-40="PR921">
     <description>Test of xsl:iterate instruction, xsl:break within xsl:switch branch.</description>
     <created by="Michael Kay" on="2024-01-01"/>
