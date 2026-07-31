@@ -1529,4 +1529,33 @@
       </result>
    </test-case>
    
+   <test-case name="sort-082" covers-40="PR1674">
+      <description>Composite sort keys, descending</description>
+      <created by="Michael Kay" on="2025-01-08"/>
+      <dependencies>
+         <spec value="XSLT40+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sort-082.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/item[1] = "The last of the summer wine"</assert>
+            <assert>/out/item[2] = "The  end of civilization"</assert>
+            <assert>/out/item[3] = "The end"</assert>
+            <assert>/out/item[4] = "A walk in the park"</assert>
+            <assert>/out/item[5] = "A nice cup of tea"</assert>
+            <assert>/out/item[6] = ""</assert>
+         </all-of>
+         
+         <item>The last of the summer wine</item>
+         <item>The  end of civilization</item>
+         <item>The end</item>
+         <item>A walk in the park</item>
+         <item>A nice cup of tea</item>
+         <item/>
+         
+      </result>
+   </test-case>
+   
 </test-set>
