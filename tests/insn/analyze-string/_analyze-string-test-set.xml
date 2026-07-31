@@ -1225,4 +1225,65 @@ world</E1><E2>*</E2></out>]]></assert-xml>
       </result>
    </test-case>
    
+   <test-case name="analyze-string-405">
+      <description>Test of regex-group() with named capture groups.</description>
+      <created by="Michael Kay" on="2026-07-19"/>
+      <environment ref="regex024"/>
+      <dependencies>
+         <spec value="XSLT40+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="analyze-string-405.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>2002-03-23</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="analyze-string-406">
+      <description>Test of regex-group() using group numbers to access named capture groups.</description>
+      <created by="Michael Kay" on="2026-07-19"/>
+      <environment ref="regex024"/>
+      <dependencies>
+         <spec value="XSLT40+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="analyze-string-406.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>2002-03-23</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="analyze-string-407">
+      <description>Test of regex-groups() with named capture groups.</description>
+      <created by="Michael Kay" on="2026-07-19"/>
+      <environment ref="regex024"/>
+      <dependencies>
+         <spec value="XSLT40+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="analyze-string-407.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>2002-03-23</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="analyze-string-408">
+      <description>Test of regex-groups() with numbered capture groups.</description>
+      <created by="Michael Kay" on="2026-07-19"/>
+      <environment ref="regex024"/>
+      <dependencies>
+         <spec value="XSLT40+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="analyze-string-408.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>2002-03-23</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   
 </test-set>
