@@ -160,6 +160,7 @@
       <modified by="Tim Mills" on="2013-01-29"
          change="added variant with hex encoding of character references"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2026-08-04" change="Allow escaping as per canonical XML"/>
       <environment ref="output-0102"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -172,6 +173,7 @@
          <any-of>
             <serialization-matches><![CDATA[href="% %C2%96 %C2%96 a &#34;  %C2%A1 &lt; &gt; &amp; end"]]></serialization-matches>
             <serialization-matches><![CDATA[href="% %C2%96 %C2%96 a &#x22;  %C2%A1 &lt; &gt; &amp; end"]]></serialization-matches>
+            <serialization-matches><![CDATA[href="% %C2%96 %C2%96 a &quot;  %C2%A1 &lt; > &amp; end"]]></serialization-matches>
          </any-of>
       </result>
    </test-case>
@@ -280,6 +282,7 @@
          change="added variant with hex encoding of character references"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <modified by="Michael Kay" on="2019-12-10" change="Allow decimal as well as hex character references"/>
+      <modified by="Michael Kay" on="2026-08-04" change="Allow escaping as per canonical XML"/>
       <environment ref="output-0103"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -289,7 +292,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-            <serialization-matches><![CDATA[href="% %C2%96 &#0*(x96|150); a &#0*(34|x22);  ¡ &lt; &gt; &amp; end"]]></serialization-matches>
+            <serialization-matches><![CDATA[href="% %C2%96 &#0*(x96|150); a &(quot|#0*(34|x22));  ¡ &lt; (>|&gt;) &amp; end"]]></serialization-matches>
       </result>
    </test-case>
 
