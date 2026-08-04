@@ -187,4 +187,18 @@
          <assert-xml><![CDATA[<out>Test Executed Successfully!!</out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="path-011">
+      <description>Purpose: Test ordering of namespace nodes. Saxon bug 7198.</description>
+      <created by="Michael Kay" on="2026-07-31"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="path-011.xsl"/>
+      </test>
+      <result>
+         <assert>/out = "x=abc xml=http://www.w3.org/XML/1998/namespace =abc"</assert>
+      </result>
+   </test-case>
 </test-set>
